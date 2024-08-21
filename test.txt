@@ -1,0 +1,12 @@
+resource "null_resource" "disable_deletion_protection" {
+  depends_on = [aws_db_instance.example]
+
+  provisioner "local-exec" {
+    command = <<EOT
+      aws rds modify-db-instance \
+        --db-instance-identifier ${aws_db_instance.example.id} \
+        --no-deletion-protection \
+        --apply-immediately
+    EOT
+  }
+}
