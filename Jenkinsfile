@@ -5,7 +5,7 @@ pipeline {
        imagename = "devsikal/julyjavaimage"
        registryCredential = 'docker-hub'
        dockerImage = ''
-  }
+           }
 
   
   stages {
@@ -24,28 +24,29 @@ pipeline {
             }
         }
     
-      stage('Build Docker image') { 
-          steps{
-                script {
-                   dockerImage = docker.build imagename + ":$BUILD_NUMBER"
-                  
-                          } 
-                      }
-                }
+//       stage('Build Docker image') {
+//           steps{
+//                 script {
+//                    dockerImage = docker.build imagename + ":$BUILD_NUMBER"
+//
+//                           }
+//                       }
+//                 }
 
-     stage('Push Docker Image to DockerHub') {
-           steps{
-               script {
-                    docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push("$BUILD_NUMBER")
-                                              }
-                                    }
-                             }
-                  }
-     stage('Remove Unused docker image') {
-          steps{
-              sh "docker rmi $imagename:$BUILD_NUMBER"
-                        }
-            }  
-   }
+//      stage('Push Docker Image to DockerHub') {
+//            steps{
+//                script {
+//                     docker.withRegistry( '', registryCredential ) {
+//                     dockerImage.push("$BUILD_NUMBER")
+//                                               }
+//                                     }
+//                              }
+//                   }
+
+//      stage('Remove Unused docker image') {
+//           steps{
+//               sh "docker rmi $imagename:$BUILD_NUMBER"
+//                         }
+//             }
+//    }
 }
