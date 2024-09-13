@@ -24,15 +24,13 @@ pipeline {
         }
     
       stage('Build Docker image') {
-          steps {
-          echo imagename
-          }
-//                 script {
-//                    dockerImage = docker.build imagename + ":$BUILD_NUMBER"
-//
-//                           }
-//                       }
-                }
+          steps{
+                script {
+                  //  dockerImage = docker.build imagename + ":$BUILD_NUMBER"
+                  dockerImage = docker.build("${imagename}:${env.BUILD_NUMBER}")
+                  }
+              }
+       }
 
 //      stage('Push Docker Image to DockerHub') {
 //            steps{
