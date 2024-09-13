@@ -29,6 +29,7 @@ pipeline {
                   //  dockerImage = docker.build imagename + ":$BUILD_NUMBER"
                   dockerImage = docker.build("${imagename}:${env.BUILD_NUMBER}")
                   }
+                  echo 'Build docker image done' + imagename
               }
        }
 
