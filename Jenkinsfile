@@ -32,19 +32,19 @@ pipeline {
                       }
                 }
 
-     stage('Push Docker Image to DockerHub') {
-           steps{
-               script {
-                    docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push("$BUILD_NUMBER")
-                                              }
-                                    }
-                             }
-                  }
-     stage('Remove Unused docker image') {
-          steps{
-              sh "docker rmi $imagename:$BUILD_NUMBER"
-                        }
-            }
+//      stage('Push Docker Image to DockerHub') {
+//            steps{
+//                script {
+//                     docker.withRegistry( '', registryCredential ) {
+//                     dockerImage.push("$BUILD_NUMBER")
+//                                               }
+//                                     }
+//                              }
+//                   }
+//      stage('Remove Unused docker image') {
+//           steps{
+//               sh "docker rmi $imagename:$BUILD_NUMBER"
+//                         }
+//             }
    }
 }
