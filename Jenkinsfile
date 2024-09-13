@@ -5,7 +5,7 @@ pipeline {
        imagename = "tkibnyusuf/june_cohorn_golden_image"
        registryCredential = 'dockerpass'
        dockerImage = ''
-           }
+  }
 
   
   stages {
